@@ -3,4 +3,5 @@ export enum EBookTypes {
 	HARDBACK = 'hardback',
 	EBOOK = 'e-book',
 	AUDIOBOOK = 'audiobook',
+	PDF = 'pdf',
 }
