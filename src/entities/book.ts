@@ -36,7 +36,7 @@ export class Book {
 	@Column({
 		type:"date",
 		nullable:false,
-		default: ()=>'NOW()'
+		default: ()=>'(CURRENT_DATE)'
 	})
 	created: Date;
 }
