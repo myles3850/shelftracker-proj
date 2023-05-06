@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon",
 	"typeorm": "typeorm-ts-node-commonjs",
-	"migration-generation" : "typeorm migration:generate -d src/entities/*.ts"
-
+	"migration:generate": "npm run typeorm migration:generate -- -d src/dbConnection.ts"
   },
   "repository": {
     "type": "git",
