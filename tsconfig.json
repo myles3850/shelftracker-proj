@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"esModuleInterop": true,
+	  	"preserveConstEnums": true,
+	  	"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"lib": ["ES6"]
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "**/*.spec.ts"],
+
+  }
