@@ -19,6 +19,7 @@ const AppDBSource = new DataSource({
     database: process.env.DB_DATABASE,
     entities: [Book],
     logging: false,
+	synchronize: false,
 })
 
 try{
