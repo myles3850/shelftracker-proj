@@ -10,6 +10,7 @@ import { Book } from './entities/book';
 const server = express();
 const port = 3000;
 
+
 const AppDBSource = new DataSource({
 	type: "mysql",
     host: process.env.DB_HOST,
@@ -17,10 +18,15 @@ const AppDBSource = new DataSource({
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: [Book],
+    entities: ['src/entities/**/*.ts'],
+	migrations: ['src/migrations/**/*.ts'],
     logging: false,
 	synchronize: false,
+
 })
+
+export default AppDBSource;
+
 
 try{
 	AppDBSource.initialize()
