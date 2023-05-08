@@ -2,10 +2,12 @@ import * as dotenv from 'dotenv';
 import "reflect-metadata"
 import express, { Request, Response } from 'express';
 import bodyParser from "body-parser";
+import { validateOrReject } from 'class-validator';
 
 import AppDBSource from './dbConnection';
 import { IBookRequest } from './interfaces';
 import { Book } from './entities';
+import { BookDTO } from './dtos';
 
 dotenv.config();
 const server = express();
@@ -22,19 +24,29 @@ server.get('/', (req: Request, res: Response ) => {
 });
 
 server.post('/book' , async (req: Request, res: Response) =>{
-	const {title, pages, type} = req.body as IBookRequest;
+	const bookDTO = new BookDTO(req.body as IBookRequest);
 
-	const book = new Book();
+	try{
+		await validateOrReject(bookDTO, { validationError: { target: false } });
+	} catch(error){
+		return res.status(400).send(error);
+	}
 
-	book.title = title;
-	book.pages = pages;
-	book.type = type;
-	
-	const bookRepository = AppDBSource.getRepository(Book);
+	const {title, pages, type} = bookDTO;
 
-	const result = await bookRepository.save(book);
+	try{
+		const book = new Book();
+		book.title = title;
+		book.pages = pages;
+		book.type = type;
 
-	res.status(201).send(result);
+		const bookRepository = AppDBSource.getRepository(Book);
+		const result = await bookRepository.save(book);
+
+		return res.status(201).send(result);
+	} catch(error) {
+		return res.status(500).send([error.message, error.sql] || 'error updating book record')
+	}
 });
 
 server.listen(port, () => {
