@@ -10,6 +10,18 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "quotes": ["error", "single", {"allowTemplateLiterals": true}]
+    "quotes": ["error", "single", {"allowTemplateLiterals": true}],
+    "semi":["error", "always"],
+    "template-curly-spacing": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "camelcase":["error", { "properties": "always" } ],
+    "max-len": ["error", {
+      "code": 120,
+      "tabWidth": 2,
+      "ignoreComments": true,
+      "ignoreUrls": true,
+      "ignoreTemplateLiterals": true,
+      "ignoreRegExpLiterals": true
+    }]
   }
 }

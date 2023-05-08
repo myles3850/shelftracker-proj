@@ -1,12 +1,12 @@
-import { PrimaryGeneratedColumn, Column, Entity, EntitySubscriberInterface } from "typeorm";
-import { EBookTypes } from "../enums";
+import { PrimaryGeneratedColumn, Column, Entity } from 'typeorm';
+import { EBookTypes } from '../enums';
 
 @Entity()
 export class Book {
 
 	@PrimaryGeneratedColumn({
-		type:"int",
-		name: "id",
+		type:'int',
+		name: 'id',
 	})
 	id: number;
 	
@@ -34,7 +34,7 @@ export class Book {
 	type: EBookTypes;
 	
 	@Column({
-		type:"date",
+		type:'date',
 		nullable:false,
 		default: ()=>'(CURRENT_DATE)'
 	})
