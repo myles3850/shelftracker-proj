@@ -6,10 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon",
-	"typeorm": "typeorm-ts-node-commonjs",
-	"migration:generate": "npm run typeorm migration:generate -- -d src/dbConnection.ts",
-	"migration:run": "npm run typeorm migration:run -- -d src/dbConnection.ts"
-
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "npm run typeorm migration:generate -- -d src/dbConnection.ts",
+    "migration:run": "npm run typeorm migration:run -- -d src/dbConnection.ts"
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,7 @@
   },
   "homepage": "bitbucket.org/audience1/shelftracker#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql2": "^3.2.4",

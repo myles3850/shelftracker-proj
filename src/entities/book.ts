@@ -38,5 +38,5 @@ export class Book {
 		nullable:false,
 		default: ()=>'(CURRENT_DATE)'
 	})
-	created: Date;
+	created: string;
 }
