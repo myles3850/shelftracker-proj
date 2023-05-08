@@ -33,7 +33,6 @@ server.post('/book' , async (req: Request, res: Response) =>{
 	const bookRepository = AppDBSource.getRepository(Book);
 
 	const result = await bookRepository.save(book);
-	console.log(typeof(result.created))
 
 	res.status(201).send(result);
 });
