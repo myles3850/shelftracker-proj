@@ -2,12 +2,12 @@ import * as dotenv from 'dotenv';
 import "reflect-metadata"
 import express, { Request, Response } from 'express';
 import bodyParser from "body-parser";
+import { validateOrReject } from 'class-validator';
 
 import AppDBSource from './dbConnection';
 import { IBookRequest } from './interfaces';
 import { Book } from './entities';
 import { BookDTO } from './dtos';
-import { validate, validateOrReject } from 'class-validator';
 
 dotenv.config();
 const server = express();

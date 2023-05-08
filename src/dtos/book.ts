@@ -1,6 +1,6 @@
-import { EBookTypes } from "../enums";
-
 import {IsString, MaxLength, IsInt, IsNotEmpty, IsPositive, IsEnum} from 'class-validator'
+
+import { EBookTypes } from "../enums";
 import { IBookRequest } from "../interfaces";
 
 export class BookDTO {
