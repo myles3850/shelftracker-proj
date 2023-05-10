@@ -1,4 +1,4 @@
-import { EBookTypes } from "../enums";
+import { EBookTypes } from '../enums';
 
 export interface IBookRequest {
   title: string;

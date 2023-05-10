@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
-import "reflect-metadata"
+import 'reflect-metadata';
 import express, { Request, Response } from 'express';
-import bodyParser from "body-parser";
+import bodyParser from 'body-parser';
 import { validateOrReject } from 'class-validator';
 
 import AppDBSource from './dbConnection';
@@ -13,11 +13,11 @@ dotenv.config();
 const server = express();
 const port = process.env.APP_PORT;
 
-server.use(bodyParser.json())
+server.use(bodyParser.json());
 
 AppDBSource.initialize()
-	.then(() => console.log(`database connected on port ${process.env.DB_PORT}`))
-	.catch((e) => {throw new Error(e.message)});
+	.then(() => console.log(`database connected on port ${ process.env.DB_PORT }`))
+	.catch((e) => {throw new Error(e.message);});
 
 server.get('/', (req: Request, res: Response ) => {
 	res.status(200).send('all is working');
@@ -32,7 +32,7 @@ server.post('/book' , async (req: Request, res: Response) =>{
 		return res.status(400).send(error);
 	}
 
-	const {title, pages, type} = bookDTO;
+	const { title, pages, type } = bookDTO;
 
 	try{
 		const book = new Book();
@@ -45,10 +45,10 @@ server.post('/book' , async (req: Request, res: Response) =>{
 
 		return res.status(201).send(result);
 	} catch(error) {
-		return res.status(500).send([error.message, error.sql] || 'error updating book record')
+		return res.status(500).send([error.message, error.sql] || 'error updating book record');
 	}
 });
 
 server.listen(port, () => {
-	console.log(`Server online on port ${port}`);
+	console.log(`Server online on port ${ port }`);
 });
