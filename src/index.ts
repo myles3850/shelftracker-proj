@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import 'reflect-metadata';
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import { validateOrReject } from 'class-validator';
+
 
 import AppDBSource from './dbConnection';
 import { bookRouter } from './controllers';

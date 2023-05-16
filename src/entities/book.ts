@@ -1,5 +1,6 @@
-import { PrimaryGeneratedColumn, Column, Entity } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm';
 import { EBookTypes } from '../enums';
+import { Author } from './author';
 
 @Entity()
 export class Book {
@@ -21,6 +22,7 @@ export class Book {
 		type: 'int',
 		name: 'pages',
 		nullable: true,
+		default: null,
 	})
 	pages: number;
 	
@@ -36,7 +38,13 @@ export class Book {
 	@Column({
 		type:'date',
 		nullable:false,
-		default: ()=>'(CURRENT_DATE)'
+		default: 'curdate()'
 	})
 	created: string;
+
+	@ManyToOne(()=> Author, (Author) => Author.id, {
+		nullable: true,
+		onDelete: 'SET NULL',
+	})
+	author: Author;
 }
