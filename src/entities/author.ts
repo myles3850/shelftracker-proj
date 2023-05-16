@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Book } from '.';
 
 @Entity()
 export class Author {
@@ -22,4 +23,7 @@ export class Author {
 		default: () => '1',
 	})
 	active: boolean;
+
+	@OneToMany(() => Book, book => book.author)
+	books: Book[];
 }

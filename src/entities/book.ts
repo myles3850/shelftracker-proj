@@ -42,7 +42,7 @@ export class Book {
 	})
 	created: string;
 
-	@ManyToOne(()=> Author, (Author) => Author.id, {
+	@ManyToOne(()=> Author, (author) => author.id, {
 		nullable: true,
 		onDelete: 'SET NULL',
 	})
