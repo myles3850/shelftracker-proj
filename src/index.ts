@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 
 
 import AppDBSource from './dbConnection';
-import { bookRouter } from './controllers';
+import { authorRouter, bookRouter } from './controllers';
 
 dotenv.config();
 const server = express();
@@ -22,6 +22,7 @@ server.get('/', (req: Request, res: Response ) => {
 });
 
 server.use('/book', bookRouter);
+server.use('/author', authorRouter);
 
 server.listen(port, () => {
 	console.log(`Server online on port ${ port }`);
