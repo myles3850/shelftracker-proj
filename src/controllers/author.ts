@@ -2,8 +2,9 @@ import { validateOrReject } from 'class-validator';
 import express, { Request, Response } from 'express'; 
 import { AuthorDTO } from '../dtos';
 import { IAuthorRequest } from '../interfaces';
+import { postAuthor } from '../services';
 
-const authorRouter = express.Router();
+export const authorRouter = express.Router();
 
 authorRouter.post('/', async (req: Request, res: Response) => {
 
@@ -16,7 +17,8 @@ authorRouter.post('/', async (req: Request, res: Response) => {
 	}
 
 	try {
-		const result = await postAuthor();
+		const result = await postAuthor(authorDTO);
+		return res.status(201).send(result);
 	} catch (error) {
 		return res.status(500).send(error.message);
 	}

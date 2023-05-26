@@ -1,9 +1,9 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Book } from '.';
 
 @Entity()
 export class Author {
-	@PrimaryColumn({
+	@PrimaryGeneratedColumn({
 		name: 'id',
 		type: 'int'
 	})

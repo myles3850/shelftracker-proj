@@ -9,18 +9,9 @@ export class AuthorDTO {
 	@MaxLength(255)
 	name: string;
 
-	@IsOptional()
-	@IsBoolean()
-	active: boolean;
-
-	@IsOptional()
-	@IsArray()
-	@ArrayNotEmpty()
-	books: Book[];
 
 	constructor(body: IAuthorRequest) {
 		this.name = body.name;
-		this.active = body.active;
-		this.books = body.books;
 	}
+
 }
