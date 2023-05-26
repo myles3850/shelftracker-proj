@@ -1,5 +1,4 @@
-import { ArrayNotEmpty, IsArray, IsBoolean, IsNotEmpty, IsOptional, IsString, MaxLength } from 'class-validator';
-import { Book } from '../entities';
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import { IAuthorRequest } from '../interfaces';
 
 export class AuthorDTO {

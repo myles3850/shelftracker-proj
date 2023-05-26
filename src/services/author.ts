@@ -1,5 +1,6 @@
 import AppDBSource from '../dbConnection';
 import { AuthorDTO } from '../dtos';
+import { IdDTO } from '../dtos/common';
 import { Author } from '../entities';
 
 export const postAuthor = async (authorDTO: AuthorDTO): Promise<Author> => {
@@ -25,5 +26,14 @@ export const getAllAuthors =async (): Promise<Author[]> => {
 	} catch(error){
 		console.log(error);
 		throw new Error('cannot get authors');
+	}
+};
+
+export const getOneAuthor =async (idDTO: IdDTO): Promise<Author> => {
+	try{
+		return await AppDBSource.getRepository(Author).findOne({ where:{ id:parseInt(idDTO.id) } });
+	} catch(error){
+		console.log(error);
+		throw new Error('cannot get author');
 	}
 };
