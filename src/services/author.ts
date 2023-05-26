@@ -18,3 +18,12 @@ export const postAuthor = async (authorDTO: AuthorDTO): Promise<Author> => {
 	}
 
 };
+
+export const getAllAuthors =async (): Promise<Author[]> => {
+	try{
+		return await AppDBSource.getRepository(Author).find();
+	} catch(error){
+		console.log(error);
+		throw new Error('cannot get authors');
+	}
+};
