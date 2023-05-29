@@ -1,6 +1,5 @@
 import AppDBSource from '../dbConnection';
-import { AuthorDTO } from '../dtos';
-import { IdDTO } from '../dtos/common';
+import { AuthorDTO, IdDTO } from '../dtos';
 import { Author } from '../entities';
 
 export const postAuthor = async (authorDTO: AuthorDTO): Promise<Author> => {
