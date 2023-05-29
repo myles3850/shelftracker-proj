@@ -1,6 +1,7 @@
-import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne, JoinColumn } from 'typeorm';
 import { EBookTypes } from '../enums';
 import { Author } from './author';
+// import { Author } from './author';
 
 @Entity()
 export class Book {
@@ -42,9 +43,21 @@ export class Book {
 	})
 	created: string;
 
-	@ManyToOne(()=> Author, (author) => author.id, {
+	@Column({
+		type: 'int',
+		name: 'author_id',
 		nullable: true,
-		onDelete: 'SET NULL',
 	})
-	author: Author;
+	authorId: number | null;
+	
+	@ManyToOne(()=> Author, author => author.books, {
+		nullable: true,
+		onDelete: 'SET NULL' 
+	})
+	@JoinColumn({
+		name: 'author_id',
+		referencedColumnName: 'id'
+	})
+	author: Author | null;
+
 }
