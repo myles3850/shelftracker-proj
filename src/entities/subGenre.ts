@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Book } from './book';
 
 @Entity({ name: 'sub_genre' })
-export class subGenre {
+export class SubGenre {
 	@PrimaryGeneratedColumn({
 		name: 'id',
 		type: 'int',
@@ -15,4 +16,5 @@ export class subGenre {
 		unique: true,
 	})
 	name: string;
+
 }

@@ -1,5 +1,5 @@
 import { ArrayNotEmpty, ArrayUnique, IsArray, IsString } from 'class-validator';
-import { ISubGenreRequest } from '../../interfaces';
+import { INamesRequest } from '../../interfaces';
 
 export class NamesDTO {
 	@IsArray()
@@ -8,7 +8,7 @@ export class NamesDTO {
 	@IsString({ each: true })
 	names: string[];
 
-	constructor(body: ISubGenreRequest) {
+	constructor(body: INamesRequest) {
 		this.names = body.names;
 	}
 }
