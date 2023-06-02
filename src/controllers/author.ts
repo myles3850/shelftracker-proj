@@ -1,7 +1,6 @@
 import { validateOrReject } from 'class-validator';
 import express, { Request, Response } from 'express'; 
-import { AuthorDTO } from '../dtos';
-import { IdDTO } from '../dtos/common';
+import { AuthorDTO, IdDTO } from '../dtos';
 import { IAuthorRequest } from '../interfaces';
 import { getAllAuthors, getOneAuthor, postAuthor } from '../services';
 

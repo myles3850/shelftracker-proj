@@ -1,7 +1,6 @@
 import { PrimaryGeneratedColumn, Column, Entity, ManyToOne, JoinColumn } from 'typeorm';
 import { EBookTypes } from '../enums';
 import { Author } from './author';
-// import { Author } from './author';
 
 @Entity()
 export class Book {
@@ -49,6 +48,13 @@ export class Book {
 		nullable: true,
 	})
 	authorId: number | null;
+
+	@Column({
+		type: 'varchar',
+		name: 'subgenre_ids',
+		nullable: true
+	})
+	subGenreIds: string | null;
 	
 	@ManyToOne(()=> Author, author => author.books, {
 		nullable: true,
