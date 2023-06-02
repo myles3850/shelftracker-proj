@@ -51,10 +51,10 @@ export class Book {
 
 	@Column({
 		type: 'varchar',
-		name: 'subgenre_id',
+		name: 'subgenre_ids',
 		nullable: true
 	})
-	subGenreId: string | null;
+	subGenreIds: string | null;
 	
 	@ManyToOne(()=> Author, author => author.books, {
 		nullable: true,
