@@ -6,6 +6,11 @@ declare namespace NodeJS{
 		DB_USERNAME: string,
 		DB_PASSWORD: string,
 		APP_PORT: string,
-		FS_ADDRESS: string,
+		S3_ADDRESS: string,
+		S3_PORT: string,
+		S3_BUCKET: string,
+		S3_ID: string,
+		S3_SECRET: string,
+
 	}
 }
