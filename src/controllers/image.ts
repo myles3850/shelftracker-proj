@@ -2,7 +2,8 @@ import crypto from 'crypto';
 import express, { Request, Response } from 'express';
 import multer from 'multer';
 import { addImageToBucket, getImageReference, insertImageReference } from '../services';
-import { Image } from '../entities';
+import { IdDTO } from '../dtos';
+import { validateOrReject } from 'class-validator';
 
 export const imageRouter = express.Router();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5_000_000 } }); //5MB filesize
@@ -26,15 +27,18 @@ imageRouter.post('/',upload.single('image'), async(req: Request, res: Response):
 
 });
 
-imageRouter.get('/', async (req: Request, res: Response): Promise<void> => {
+imageRouter.get('/:id', async (req: Request, res: Response) => {
 
-	const { imageId } = req.query;
-	console.log(imageId);
-	
-	const imageArray = JSON.parse(imageId);
+	const imageDTO = new IdDTO(req.params.id);
+
+	try{
+		await validateOrReject(imageDTO, { validationError: { target:false } });
+	}catch(error){
+		return res.status(400).send(error);
+	}
 
 	try {
-		const result = await getImageReference(imageArray);
+		const result = await getImageReference(imageDTO);
 		res.status(200).send(result);
 	} catch (error) {
 		console.log(error);

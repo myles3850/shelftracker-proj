@@ -1,7 +1,6 @@
 import * as minio from 'minio';
 import AppDBSource from '../dbConnection';
 import { Image } from '../entities';
-import { IdDTO } from '../dtos';
 
 const getBucketConnection = ()=> new minio.Client({
 	endPoint: process.env.S3_ADDRESS,
@@ -36,10 +35,10 @@ export const insertImageReference = async (imageURL:string): Promise<number> => 
 	}
 };
 
-export const getImageReference = async (id): Promise<Image[]> => {
+export const getImageReference = async (id): Promise<Image> => {
 	const imageRepository = AppDBSource.getRepository(Image);
 	try {
-		return await imageRepository.find({ where:{ id:id } });
+		return await imageRepository.findOne ({ where:{ id:id } });
 	} catch (error) {
 		throw new Error(error);
 	}
