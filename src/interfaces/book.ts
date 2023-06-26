@@ -5,4 +5,5 @@ export interface IBookRequest {
   pages: number;
   type: EBookTypes;
   authorId?: number;
+  imageId?: number;
 }
