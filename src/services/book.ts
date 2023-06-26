@@ -3,7 +3,7 @@ import { BookDTO } from '../dtos';
 import { Book } from '../entities';
 
 export const createBook = async (bookDTO: BookDTO): Promise<Book> => {
-  const { title, pages, type, authorId } = bookDTO;
+  const { title, pages, type, authorId, imageId } = bookDTO;
 
   try {
     const book = new Book();
@@ -11,6 +11,7 @@ export const createBook = async (bookDTO: BookDTO): Promise<Book> => {
     book.pages = pages;
     book.type = type;
 	book.authorId = authorId || null;
+	book.imageId = imageId || null;
 
     const bookRepository = AppDBSource.getRepository(Book);
     const result = await bookRepository.save(book);

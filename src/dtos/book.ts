@@ -24,12 +24,20 @@ export class BookDTO {
   @IsPositive()
   authorId?: number;
 
+  @IsOptional()
+  @IsInt()
+  @IsPositive()
+  imageId?: number;
+
   constructor(body: IBookRequest) {
     this.title = body.title;
     this.pages = body.pages;
     this.type = body.type;
 	if (body.authorId || body.authorId >= 0) {
 		this.authorId = body.authorId;
+	}
+	if (body.imageId || body.imageId >= 0) {
+		this.imageId = body.imageId;
 	}
   }
 }
