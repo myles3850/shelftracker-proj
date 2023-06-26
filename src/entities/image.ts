@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Author } from './author';
+import { Book } from './book';
 
 @Entity()
 export class Image {
@@ -23,4 +25,17 @@ export class Image {
 		default: () => 'curdate()'
 	})
 	created: string;
+
+	@OneToOne(() => Book, book => book.image, {
+		nullable: true,
+		onDelete: 'CASCADE',
+	})
+	book: Book | null;
+
+	@OneToOne(() => Author, author => author.image, {
+		nullable: true,
+		onDelete: 'CASCADE',
+	})
+	author: Author | null;
+
 }
