@@ -26,7 +26,7 @@ export const getOneBook = async (id: number): Promise<Book> => {
 
 	try {
 		const bookRepository = AppDBSource.getRepository(Book);
-		const result = await bookRepository.findOne({ where: { id } });
+		const result = await bookRepository.findOne({ where: { id }, relations: { image: true } });
 		return result;
 	} catch (error) {
 		throw new Error(`something went wrong retrieving the book: ${ error.message }`);
