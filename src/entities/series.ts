@@ -15,7 +15,7 @@ export class Series {
 		type: 'varchar',
 		nullable: false,
 	})
-	title: string;
+	name: string;
 
 	@Column({
 		name: 'book_ids',
