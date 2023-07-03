@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { SeriesDTO } from '../dtos';
 import { validateOrReject } from 'class-validator';
-import { createSeries } from '../services';
+import { createSeries, getAllSeries } from '../services';
 
 export const seriesRouter = express.Router();
 
@@ -21,5 +21,14 @@ seriesRouter.post('/', async (req: Request, res: Response) => {
 	} catch (error) {
 		return res.status(500).send(error.message);
 
+	}
+});
+
+seriesRouter.get('/all', async (req: Request, res: Response) => {
+	try {
+		const result = await getAllSeries();
+		return res.status(200).send(result);
+	} catch (error) {
+		return res.status(500).send(error.message);
 	}
 });
