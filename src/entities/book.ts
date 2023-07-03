@@ -2,6 +2,7 @@ import { PrimaryGeneratedColumn, Column, Entity, ManyToOne, JoinColumn, OneToOne
 import { EBookTypes } from '../enums';
 import { Author } from './author';
 import { Image } from './image';
+import { Series } from './series';
 
 @Entity()
 export class Book {
@@ -63,6 +64,13 @@ export class Book {
 		nullable: true,
 	})
 	imageId: number | null;
+
+	@Column({
+		type: 'int',
+		name: 'series_id',
+		nullable:true,
+	})
+	seriesId: number | null;
 	
 	@ManyToOne(()=> Author, author => author.books, {
 		nullable: true,
@@ -83,5 +91,15 @@ export class Book {
 		referencedColumnName: 'id'
 	})
 	image: Image | null;
+
+	@ManyToOne(()=> Series, Series => Series.books, {
+		nullable: true,
+		onDelete: 'SET NULL' 
+	})
+	@JoinColumn({
+		name: 'series_id',
+		referencedColumnName: 'id'
+	})
+	series: Series | null;
 
 }
