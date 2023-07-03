@@ -1,4 +1,5 @@
 export { bookRouter } from './book';
 export { authorRouter } from './author';
-export { subGenreRouter } from './subGenre';
 export { imageRouter } from './image';
+export { subGenreRouter } from './subGenre';
+export { seriesRouter } from './series';
