@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
-import { SeriesDTO } from '../dtos';
+import { IdDTO, SeriesDTO } from '../dtos';
 import { validateOrReject } from 'class-validator';
-import { createSeries, getAllSeries } from '../services';
+import { createSeries, getAllSeries, getOneSeries } from '../services';
 
 export const seriesRouter = express.Router();
 
@@ -27,6 +27,21 @@ seriesRouter.post('/', async (req: Request, res: Response) => {
 seriesRouter.get('/all', async (req: Request, res: Response) => {
 	try {
 		const result = await getAllSeries();
+		return res.status(200).send(result);
+	} catch (error) {
+		return res.status(500).send(error.message);
+	}
+});
+
+seriesRouter.get('/:id', async (req: Request, res: Response) => {
+	const idDTO = new IdDTO(req.params.id);
+	try {
+		await validateOrReject(idDTO, { validationError: { target:false } });
+	} catch (error) {
+		return res.status(400).send(error);
+	}
+	try {
+		const result = await getOneSeries(idDTO);
 		return res.status(200).send(result);
 	} catch (error) {
 		return res.status(500).send(error.message);

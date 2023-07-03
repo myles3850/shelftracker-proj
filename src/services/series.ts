@@ -1,5 +1,5 @@
 import AppDBSource from '../dbConnection';
-import { SeriesDTO } from '../dtos';
+import { IdDTO, SeriesDTO } from '../dtos';
 import { Series } from '../entities';
 
 export const createSeries = async (seriesDTO: SeriesDTO) => {
@@ -25,4 +25,17 @@ export const getAllSeries = async (): Promise<Series[]> => {
 	} catch (error) {
 		throw new Error(`something went wrong retrieving the series records: ${ error.message }`);
 	}
+};
+
+export const getOneSeries =async (idDTO:IdDTO): Promise<Series> => {
+	try {
+		const seriesRepository = AppDBSource.getRepository(Series);
+		return await seriesRepository.findOne({ 
+			where: { id: parseInt(idDTO.id) },
+			relations: { books: true } 
+		});
+	} catch (error) {
+		throw new Error(`something went wrong retrieving the series record: ${ error.message }`);
+	}
+
 };
