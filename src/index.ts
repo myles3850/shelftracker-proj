@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 
 
 import AppDBSource from './dbConnection';
-import { authorRouter, bookRouter, imageRouter, seriesRouter, subGenreRouter } from './controllers';
+import { GenreRouter, authorRouter, bookRouter, imageRouter, seriesRouter, subGenreRouter } from './controllers';
 
 dotenv.config();
 const server = express();
@@ -26,6 +26,7 @@ server.use('/author', authorRouter);
 server.use('/sub-genre', subGenreRouter);
 server.use('/image', imageRouter);
 server.use('/series', seriesRouter);
+server.use('/genre', GenreRouter);
 
 server.listen(port, () => {
 	console.log(`Server online on port ${ port }`);
