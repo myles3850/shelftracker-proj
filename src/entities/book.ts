@@ -3,6 +3,7 @@ import { EBookTypes } from '../enums';
 import { Author } from './author';
 import { Image } from './image';
 import { Series } from './series';
+import { Genre } from './genre';
 
 @Entity()
 export class Book {
@@ -71,6 +72,13 @@ export class Book {
 		nullable:true,
 	})
 	seriesId: number | null;
+
+	@Column({
+		type: 'int',
+		name: 'genre_id',
+		nullable: true,
+	})
+	genreId: number | null;
 	
 	@ManyToOne(()=> Author, author => author.books, {
 		nullable: true,
@@ -101,5 +109,15 @@ export class Book {
 		referencedColumnName: 'id'
 	})
 	series: Series | null;
+
+	@ManyToOne(()=> Genre, genre => genre.books, {
+		nullable: true,
+		onDelete: 'SET NULL' 
+	})
+	@JoinColumn({
+		name: 'genre_id',
+		referencedColumnName: 'id'
+	})
+	genre: Genre | null;
 
 }
