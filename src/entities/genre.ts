@@ -13,7 +13,8 @@ export class Genre {
 	@Column({
 		name: 'name',
 		type: 'varchar',
-		nullable: false
+		nullable: false,
+		unique: true,
 	})
 	name: string;
 
