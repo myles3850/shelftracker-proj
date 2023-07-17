@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Book } from './book';
 
 @Entity()
@@ -25,19 +25,9 @@ export class Genre {
 	})
 	created: Date;
 
-	@Column({
-		name: 'book_ids',
-		nullable: true,
-	})
-	bookIds: number | null;
-
 	@OneToMany(() => Book, book => book.genre, {
 		onDelete: 'SET NULL',
 		nullable:true,
 	})
-	@JoinColumn({
-		referencedColumnName: 'id',
-		name: 'book_ids'
-	})
-	books: Book | null;
+	books: Book[] | null;
 }
