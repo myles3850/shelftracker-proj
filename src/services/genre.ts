@@ -26,6 +26,6 @@ export const getAllGenres = async (): Promise<Genre[]> => {
 		return await AppDBSource.getRepository(Genre).find();
 	} catch(error){
 		console.log(error);
-		throw new Error('cannot get subGenres');
+		throw new Error('cannot get Genres');
 	}
 };
