@@ -7,7 +7,7 @@ steps:
   image: alpine
   commands:
   - echo hello!
-  - echo out
+  - echo out to me
 
 trigger:
   event:
