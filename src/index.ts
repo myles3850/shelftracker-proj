@@ -18,7 +18,7 @@ AppDBSource.initialize()
 	.catch((e) => {throw new Error(e.message);});
 
 server.get('/', (req: Request, res: Response ) => {
-	res.status(200).send('all is working');
+	res.status(200).send('all is working now');
 });
 
 server.use('/book', bookRouter);
