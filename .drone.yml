@@ -4,10 +4,9 @@ name: shelftracker test
 
 steps:
 - name: greeting
-  image: alpine
+  image: node
   commands:
-  - echo hello!
-  - echo out to me please
+  - npm install
 
 trigger:
   event:
