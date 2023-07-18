@@ -4,7 +4,7 @@ name: shelftracker test
 
 steps:
 - name: greeting
-  image: node
+  image: node:current-alpine
   commands:
   - npm install
 
