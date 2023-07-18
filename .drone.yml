@@ -10,4 +10,4 @@ steps:
 
 trigger:
   event:
-  - repo:push
+  - push
