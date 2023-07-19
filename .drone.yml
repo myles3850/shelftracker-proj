@@ -17,9 +17,7 @@ steps:
   image: node:current-alpine
   commands:
   - npm run test
-  depends_on:
-  - build
-  - lint check
+
 
 trigger:
   event:
