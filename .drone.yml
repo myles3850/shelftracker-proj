@@ -3,10 +3,19 @@ type: docker
 name: shelftracker test
 
 steps:
-- name: greeting
-  image: node:current-alpine
+  build:
+    image: node:current-alpine
+    commands:
+    - npm i
+
+
+- name: lint check
   commands:
-  - npm install
+  - npm run lint
+  depends:
+  - build
+
+
 
 trigger:
   event:
