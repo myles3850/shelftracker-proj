@@ -12,52 +12,14 @@ steps:
   image: node:current-alpine
   commands:
   - npm run lint
+
+- name: run tests
+  image: node:current-alpine
+  commands:
+  - npm run test
   depends:
   - build
-
-trigger:
-  event:
-  - push
-
----
-kind: pipeline
-type: docker
-name: shelftracker test 2
-
-steps:
-- name: build
-  image: node:current-alpine
-  commands:
-  - npm i
-
-- name: lint check
-  image: node:current-alpine
-  commands:
-  - npm run lint
-  depends:
-  - build
-
-trigger:
-  event:
-  - push
-
----
-kind: pipeline
-type: docker
-name: shelftracker test 3
-
-steps:
-- name: build
-  image: node:current-alpine
-  commands:
-  - npm i
-
-- name: lint check
-  image: node:current-alpine
-  commands:
-  - npm run lint
-  depends:
-  - build
+  - lint check
 
 trigger:
   event:
