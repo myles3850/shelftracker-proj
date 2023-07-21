@@ -1,5 +1,28 @@
 kind: pipeline
 type: docker
+name: push to github
+
+steps:
+- name: push to github
+  image: appleboy/drone-git-push
+  settings:
+    branch: develop
+    remote: git@github.com:myles3850/shelftracker-proj.git
+    ssh_key:
+      from_secret: GHSSHKEY
+    force: false
+    commit: true
+
+trigger:
+  event:
+  - push
+
+  
+
+---
+
+kind: pipeline
+type: docker
 name: shelftracker
 
 steps:
