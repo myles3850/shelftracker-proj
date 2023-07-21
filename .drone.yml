@@ -8,8 +8,6 @@ steps:
   settings:
     branch: develop
     remote: ssh://git@github.com:22/myles3850/shelftracker-proj.git
-    ssh_key:
-      from_secret: GHSSHKEY
     force: false
     commit: true
 
