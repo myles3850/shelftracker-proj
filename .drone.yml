@@ -3,7 +3,7 @@ type: docker
 name: push to github
 
 steps:
-- name:
+- name: check secret
   image: node:alpine
   settings:
     ssh_key:
