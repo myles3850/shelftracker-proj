@@ -3,13 +3,22 @@ type: docker
 name: push to github
 
 steps:
+- name:
+  image: node:alpine
+  settings:
+    ssh_key:
+      from_secret: test_secret
+  commands:
+  - echo ${test_secret}
+
+
 - name: push to git
   image: appleboy/drone-git-push
   settings:
     branch: develop
     remote: ssh://git@github.com:22/myles3850/shelftracker-proj.git
     ssh_key: 
-      from_secret: ssh_key
+      from_secret: test_secret
     force: false
     commit: true
 
