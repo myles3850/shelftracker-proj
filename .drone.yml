@@ -4,7 +4,7 @@ name: push to github
 
 steps:
 - name: check secret
-  image: node:alpine
+  image: alpine
   settings:
     ssh_key:
       from_secret: test_secret
