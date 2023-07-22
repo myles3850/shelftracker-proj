@@ -5,7 +5,7 @@ name: push to github
 steps:
 - name: check secret
   image: alpine
-  settings:
+  environment:
     ssh_key:
       from_secret: test_secret
   commands:
